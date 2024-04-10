@@ -171,18 +171,22 @@
 // //     console.log(`Endpoint http://localhost:${port}`);
 // // })
 import express from 'express';
-import router from './lab4/router/book.js';  
+import router from './router/product.js';  
 import connectdb from './database/connect.js';
-// import Authrouter from './lab4/router/auth.js';
+import Authrouter from './router/auth.js';
+import uploadRouter from './router/upload.js';
+import cors from 'cors'
 // import mongoose from 'mongoose';
 // import { LocalStorage } from "node-localstorage";
 // global.localStorage = new LocalStorage('./scratch');
 const app = express();
 const port = 3000;
+app.use(cors());
 app.use(express.json());
 app.use('/api',router);
-// app.use('/api',Authrouter)
+app.use('/api',Authrouter);
+app.use('/file',uploadRouter);
 app.listen(port,async ()=>{
     await connectdb();
-    console.log(`Endpoint http://localhost:${port}/api/books`);
+    console.log(`Endpoint http://localhost:${port}/api/products`);
 })

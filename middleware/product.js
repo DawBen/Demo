@@ -14,13 +14,15 @@ const ProductObject = Joi.object({
         "number.min":"Giá sản phẩm không nhỏ hơn 1000"
     })
 })
-export const CheckValidate =(req,res,next) =>{
-    const {name,image,price} = req.body;
-    const {error} = ProductObject.validate({name,image,price});
-    console.log(error.details);
-    if (error) {
-        res.send({status:false,messages:error.message});
-    }else{
-        next();
-    } 
-}
+// export const CheckValidate =(req,res,next) =>{
+//     const {name,image,price} = req.body;
+//     const {error} = ProductObject.validate({name,image,price});
+//     console.log(error.details);
+//     if (error) {
+//         res.send({status:false,messages:error.message});
+//     }else{
+//         next();
+//     } 
+// }
+
+// export const ValidateProduct
